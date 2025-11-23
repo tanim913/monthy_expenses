@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simple Monthly Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>PocketTrack — Monthly Expense Snapshot</h1>
+                <p class="lead">Quickly log your remaining money each day. The app will compute per-day spending,
+                    averages and monthly totals.</p>
+            </div>
+            <div class="top-actions">
+                <button id="demoBtn" class="btn btn-ghost">Load demo</button>
+                <button id="exportCsv" class="btn btn-ghost">Export CSV</button>
+                <!-- <button class="btn btn-ghost" onclick="openRecordPage()">View Records</button> -->
+                <button id="clearAll" class="btn btn-ghost" title="Clear everything">Clear</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <form id="entryForm" onsubmit="return false">
+                <div class="form-grid">
+                    <div>
+                        <label class="small">Date</label>
+                        <input id="dateInput" type="date" required />
+                    </div>
+                    <div>
+                        <label class="small">Current remaining amount (BDT)</label>
+                        <input id="amountInput" type="number" min="0" step="0.01" placeholder="e.g. 345.50" required />
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                        <button id="addBtn" class="btn" style="width:100%">Add / Update</button>
+                        <button id="newMonthBtn" class="btn-ghost" style="width:100%">Start new month
+                            (optional)</button>
+                    </div>
+                </div>
+            </form>
+            <p class="muted" style="margin-top:10px">Tip: The first entry in a month acts as the month's starting
+                balance. Add a snapshot whenever you want; the app calculates how much you've spent since your last
+                snapshot.</p>
+        </section>
+
+        <section id="monthsContainer"></section>
+
+        <footer class="muted">This app stores data only on your device (localStorage). To sync across devices you'll
+            need a backend like Firebase later.</footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
